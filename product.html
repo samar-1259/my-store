@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>تفاصيل المنتج</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      direction: rtl;
+      background-color: #f9f9f9;
+      padding: 20px;
+    }
+    .product-details {
+      max-width: 600px;
+      margin: auto;
+      background: white;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+    img {
+      width: 100%;
+      border-radius: 10px;
+    }
+    button {
+      background-color: #28a745;
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      margin-top: 15px;
+    }
+  </style>
+</head>
+<body>
+  <div class="product-details">
+    <img id="product-image" src="" alt="صورة المنتج" />
+    <h2 id="product-name"></h2>
+    <p id="product-price"></p>
+    <p>وصف المنتج...</p>
+    <button onclick="addToCart()">أضف إلى السلة</button>
+  </div>
+
+  <script>
+    const params = new URLSearchParams(window.location.search);
+    const id = parseInt(params.get("id")) || 1;
+
+    const product = {
+      id,
+      name: `منتج ${id}`,
+      price: `${10 * id} ريال`,
+      image: `https://via.placeholder.com/400x300?text=منتج+${id}`
+    };
+
+    document.getElementById("product-name").textContent = product.name;
+    document.getElementById("product-price").textContent = product.price;
+    document.getElementById("product-image").src = product.image;
+
+    function addToCart() {
+      alert("تمت إضافة المنتج إلى السلة!");
+    }
+  </script>
+</body>
+</html>
